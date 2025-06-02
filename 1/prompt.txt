@@ -1,0 +1,14 @@
+You are a software architecture expert. Given the following project requirements, use step-by-step Chain-of-Thought (CoT) reasoning to:
+- Analyze each requirement in detail.
+- Compare relevant types of databases (e.g., relational, NoSQL, graph, etc.) based on those requirements.
+- Justify the final choice of the most suitable database type for this project.
+- Ensure that your reasoning is logically structured and clearly shows how each requirement influenced your final decision.
+
+Project Requirements:
+- The application is a social platform expected to support millions of users.
+- It needs to store user profiles, posts, and social connections (e.g., followers or friends).
+- High data read speed is critical.
+- The workload is read-heavy (approximately 80% reads, 20% writes).
+- Scalability is essential as the user base grows.
+
+Deliver a comprehensive, structured response with clear rationale behind each step of your analysis and conclusion.
