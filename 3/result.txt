@@ -1,0 +1,10 @@
+{
+  "summary": "The text discusses the growing popularity of remote work, highlighting both its benefits such as flexibility and cost savings, and its challenges like isolation and productivity issues, while noting the rise of hybrid work models.",
+  "sentiment": "Neutral",
+  "score": 0,
+  "metadata": {
+    "original_text_length": 940,
+    "language": "en",
+    "timestamp": "2025-06-04T12:00:00Z"
+  }
+}
