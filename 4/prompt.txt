@@ -1,0 +1,62 @@
+
+
+**Prompt:**
+
+You are an AI code reviewer. Analyze the following C# code snippet, focusing specifically on the `ProcessUserData` method inside the `UserProcessor` class. Review the code sequentially from three expert perspectives:
+
+---
+
+### Code for Review:
+
+```csharp
+public List<User> ProcessUserData(List<Dictionary<string, object>> data)
+{
+    var users = new List<User>();
+
+    foreach (var item in data)
+    {
+        var user = new User();
+        
+        if (item.TryGetValue("id", out object idValue))
+            user.Id = idValue;
+        
+        if (item.TryGetValue("name", out object nameValue))
+            user.Name = nameValue?.ToString();
+        
+        if (item.TryGetValue("email", out object emailValue))
+            user.Email = emailValue?.ToString();
+        
+        if (item.TryGetValue("status", out object statusValue))
+            user.Active = statusValue?.ToString().Equals("active", StringComparison.OrdinalIgnoreCase) ?? false;
+        
+        users.Add(user);
+    }
+
+    Console.WriteLine($"Processed {users.Count} users");
+    return users;
+}
+```
+
+---
+
+### Review Instructions:
+
+1. **Expert Perspective: Experienced Developer**
+
+   * Focus: Code quality, maintainability, readability, and best practices.
+   * Provide **specific, actionable feedback** on improving the structure, naming conventions, type safety, and error handling.
+
+2. **Expert Perspective: Security Engineer**
+
+   * Focus: Input validation, injection risks, handling of sensitive data (e.g., email), and logging practices.
+   * Suggest **tangible improvements** to harden the function against common vulnerabilities.
+
+3. **Expert Perspective: Performance Specialist**
+
+   * Focus: Runtime efficiency, memory usage, and scalability of the logic inside the loop and data structure usage.
+   * Recommend **practical optimizations** and any improvements based on performance profiling patterns.
+
+---
+
+Each expert should independently assess the code and provide **clear observations and actionable suggestions** for their specific focus area. Avoid vague or generic feedback; each recommendation should be directly applicable to this specific function.
+
