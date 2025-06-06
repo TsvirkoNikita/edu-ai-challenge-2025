@@ -1,0 +1,39 @@
+[
+  {
+    "sentiment": "Negative",
+    "isRelevant": true,
+    "mainSubject": "Sensor reliability and hardware quality",
+    "positives": [],
+    "painPoints": [
+      "Sensor intermittently stops tracking",
+      "Issue occurs even when plugged in",
+      "Initial unit had a non-functional dongle",
+      "High cost for a product with such issues"
+    ],
+    "improvementSuggestions": [
+      "Improve sensor reliability at all polling rates",
+      "Ensure dongle functionality out of the box",
+      "Enhance quality control for high-priced products"
+    ],
+    "featuresMentioned": [
+      "Sensor tracking",
+      "Polling rate (8000Hz)",
+      "Wired mode",
+      "Wireless dongle",
+      "Price"
+    ],
+    "userExpertise": "Experienced"
+  },
+  {
+    "sentiment": "Mixed",
+    "isRelevant": true,
+    "mainSubject": "Value for money",
+    "positives": ["No noticeable flaws in the product"],
+    "painPoints": ["Price is not justified given available alternatives"],
+    "improvementSuggestions": [
+      "Reduce price to better match performance and market alternatives"
+    ],
+    "featuresMentioned": ["Price", "Performance", "Specifications"],
+    "userExpertise": "Experienced"
+  }
+]
