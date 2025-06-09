@@ -1,0 +1,37 @@
+
+> 6@1.0.0 test:coverage
+> nyc mocha test/*.test.js
+
+
+
+  Enigma Machine
+    Basic Functionality
+      тЬФ should encrypt and decrypt messages symmetrically
+      тЬФ should handle single characters correctly
+      тЬФ should work with different rotor positions
+      тЬФ should handle complex configurations
+    Plugboard
+      тЬФ should swap characters correctly in plugboard
+      тЬФ should affect encryption results
+      тЬФ should maintain symmetry with plugboard
+    Rotor Mechanics
+      тЬФ should step rotors correctly
+      тЬФ should implement double-stepping correctly
+      тЬФ should maintain rotor forward/backward symmetry
+    Edge Cases
+      тЬФ should handle non-alphabetic characters
+      тЬФ should handle empty messages
+      тЬФ should encrypt each character differently
+    Historical Test Vectors
+      тЬФ should pass known Enigma test cases
+      тЬФ should handle long messages correctly
+
+
+  15 passing (19ms)
+
+-----------------|---------|----------|---------|---------|-------------------
+File             | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-----------------|---------|----------|---------|---------|-------------------
+All files        |   77.77 |    72.72 |   68.42 |   75.86 |                   
+ enigma_fixed.js |   77.77 |    72.72 |   68.42 |   75.86 | 121-145,158       
+-----------------|---------|----------|---------|---------|-------------------
