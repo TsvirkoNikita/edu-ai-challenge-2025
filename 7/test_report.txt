@@ -1,0 +1,33 @@
+
+> sea-battle-game@1.0.0 test:coverage
+> jest --coverage
+
+PASS tests/players/CpuPlayer.test.js
+PASS tests/players/Player.test.js
+PASS tests/utils/GameUtils.test.js
+PASS tests/models/Board.test.js
+PASS tests/models/Ship.test.js
+PASS tests/players/HumanPlayer.test.js
+PASS tests/Game.test.js
+-----------------|---------|----------|---------|---------|--------------------
+File             | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s  
+-----------------|---------|----------|---------|---------|--------------------
+All files        |   85.71 |    81.37 |   92.06 |   84.78 |                    
+ src             |   53.62 |       20 |   61.53 |   52.94 |                    
+  Game.js        |   53.62 |       20 |   61.53 |   52.94 | 43-106,123,145-148 
+ src/models      |     100 |      100 |     100 |     100 |                    
+  Board.js       |     100 |      100 |     100 |     100 |                    
+  Ship.js        |     100 |      100 |     100 |     100 |                    
+ src/players     |   95.45 |     92.5 |     100 |   95.31 |                    
+  CpuPlayer.js   |    92.5 |    88.46 |     100 |    92.5 | 26-29              
+  HumanPlayer.js |     100 |      100 |     100 |     100 |                    
+  Player.js      |     100 |      100 |     100 |     100 |                    
+ src/utils       |     100 |      100 |     100 |     100 |                    
+  GameUtils.js   |     100 |      100 |     100 |     100 |                    
+-----------------|---------|----------|---------|---------|--------------------
+
+Test Suites: 7 passed, 7 total
+Tests:       114 passed, 114 total
+Snapshots:   0 total
+Time:        4.952 s, estimated 5 s
+Ran all test suites.

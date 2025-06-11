@@ -1,0 +1,50 @@
+{
+  "name": "sea-battle-game",
+  "version": "1.0.0",
+  "description": "A modern, refactored Sea Battle (Battleship) game with comprehensive unit tests",
+  "main": "src/index.js",
+  "bin": {
+    "sea-battle": "./src/index.js"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint src/ tests/",
+    "lint:fix": "eslint src/ tests/ --fix"
+  },
+  "keywords": [
+    "game",
+    "battleship",
+    "sea-battle",
+    "javascript",
+    "es6",
+    "node"
+  ],
+  "author": "Sea Battle Developer",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "eslint": "^8.56.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/index.js"
+    ],
+    "coverageDirectory": "coverage",
+    "coverageReporters": [
+      "text",
+      "lcov",
+      "html"
+    ],
+    "testMatch": [
+      "**/tests/**/*.test.js"
+    ]
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+} 
