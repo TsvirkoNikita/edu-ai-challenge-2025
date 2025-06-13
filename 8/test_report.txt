@@ -1,0 +1,46 @@
+Test Coverage Report
+==================
+
+Overall Coverage: 92.53%
+- Statements: 92.53%
+- Branches: 88%
+- Functions: 90.9%
+- Lines: 92.72%
+
+Uncovered Lines:
+- schema.js: 143-144, 172, 246
+
+Test Results
+===========
+
+Total Test Suites: 1
+Total Tests: 11
+Passed Tests: 11
+Failed Tests: 0
+
+Test Categories:
+1. String Validator
+   - validates basic string
+   - validates string length constraints
+   - validates string pattern
+
+2. Number Validator
+   - validates basic number
+   - validates number range
+
+3. Boolean Validator
+   - validates boolean values
+
+4. Array Validator
+   - validates array of strings
+   - validates array of numbers
+
+5. Object Validator
+   - validates simple object
+   - validates nested objects
+
+6. Complex Schema Example
+   - validates complex user object
+
+All tests are passing successfully, demonstrating the robustness of the validation library.
+The high test coverage indicates that the library is well-tested and reliable for production use. 

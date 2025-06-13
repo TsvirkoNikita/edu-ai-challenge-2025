@@ -1,0 +1,20 @@
+{
+  "name": "js-validation-library",
+  "version": "1.0.0",
+  "description": "A robust validation library for JavaScript",
+  "main": "schema.js",
+  "scripts": {
+    "test": "jest",
+    "test:coverage": "jest --coverage"
+  },
+  "keywords": [
+    "validation",
+    "schema",
+    "javascript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+} 
