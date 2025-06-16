@@ -125,13 +125,17 @@ class ServiceAnalyzer:
         try:
             print("🔄 Generating analysis report...")
             
-            response = self.client.responses.create(
-                model="gpt-4o-mini",
-                instructions="You are a professional business analyst specializing in digital services and technology products. Provide detailed, accurate, and well-structured analysis reports.",
-                input=prompt
+            response = self.client.chat.completions.create(
+                model="gpt-4.1-mini",
+                messages=[
+                    {"role": "system", "content": "You are a professional business analyst specializing in digital services and technology products. Provide detailed, accurate, and well-structured analysis reports."},
+                    {"role": "user", "content": prompt}
+                ],
+                max_tokens=3000,
+                temperature=0.7
             )
             
-            return response.output_text
+            return response.choices[0].message.content
             
         except Exception as e:
             return f"Error generating report: {str(e)}\n\nPlease check your OpenAI API key and internet connection."
