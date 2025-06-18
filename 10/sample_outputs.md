@@ -41,4 +41,17 @@ Filtered Products:
 4. Foam Roller - $24.99, Rating: 4.5, In Stock
 5. Jump Rope - $9.99, Rating: 4.0, In Stock
 6. Ab Roller - $19.99, Rating: 4.2, In Stock
-``` 
+```
+
+---
+
+## Sample Run 4 (Edge Case)
+**User input:**
+```
+I want a cheap smartphone that is in stock
+```
+**Output:**
+```
+No products found matching your preferences.
+```
+*Note: This correctly returns no results because the only smartphone in the dataset is out of stock.* 
