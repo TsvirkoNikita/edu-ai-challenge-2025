@@ -32,27 +32,31 @@ const tools = [
     type: 'function',
     function: {
       name: 'filter_products',
-      description: 'Filter the provided products array based on user preferences such as category, price, rating, and stock availability. Return only the products that match the user\'s request.',
+      description: 'Return products matching user criteria. STRICT RULE: Never return products with in_stock=false when user asks for "in stock" items. Never return products outside price range when user specifies limits. Return empty array if no products satisfy ALL requirements.',
       parameters: {
         type: 'object',
         properties: {
+          reasoning: {
+            type: 'string',
+            description: 'Explain your filtering logic and why certain products were included or excluded'
+          },
           filtered_products: {
             type: 'array',
-            description: 'The list of products that match the user\'s preferences.',
+            description: 'Products that pass ALL filters. Empty if none qualify.',
             items: {
               type: 'object',
               properties: {
-                name: { type: 'string', description: 'Product name' },
-                category: { type: 'string', description: 'Product category' },
-                price: { type: 'number', description: 'Product price' },
-                rating: { type: 'number', description: 'Product rating' },
-                in_stock: { type: 'boolean', description: 'Whether the product is in stock' }
+                name: { type: 'string' },
+                category: { type: 'string' },
+                price: { type: 'number' },
+                rating: { type: 'number' },
+                in_stock: { type: 'boolean' }
               },
               required: ['name', 'category', 'price', 'rating', 'in_stock']
             }
           }
         },
-        required: ['filtered_products']
+        required: ['reasoning', 'filtered_products']
       }
     }
   }
@@ -63,39 +67,59 @@ async function main() {
   const userInput = readlineSync.question('Enter your product preferences (e.g., "I need a smartphone under $800 with a great camera and long battery life"):\n');
 
   // System prompt to instruct the model
-  const systemPrompt = `You are an assistant that helps users find products. Use the filter_products function to return only the products from the provided array that match the user's preferences. Do not make up products. Only use the products provided in the array. Return the filtered list in the function call.`;
+  const systemPrompt = `You are a product filter. Your ONLY job is to return products that match EVERY single criterion the user specifies.
+
+CRITICAL RULES:
+1. "in stock" means in_stock MUST be true - if in_stock is false, DO NOT include the product
+2. "cheap" means prioritize lower prices
+3. Price limits like "under $X" mean price MUST be less than X
+4. Category requirements mean ONLY products from that category
+5. Rating requirements mean rating MUST meet the threshold
+
+IMPORTANT: If a product fails ANY criterion, exclude it completely. If NO products pass ALL criteria, return an empty array.
+
+For the specific query "I want a cheap smartphone that is in stock":
+- Look for products where category contains "smartphone" OR name contains "smartphone"  
+- The product MUST have in_stock = true
+- If no smartphones have in_stock = true, return empty array
+
+Do not return products that are out of stock when the user asks for "in stock" products.`;
 
   // Prepare messages
   const messages = [
     { role: 'system', content: systemPrompt },
-    { role: 'user', content: userInput },
+    { role: 'user', content: `User request: ${userInput}` },
     {
       role: 'user',
-      content: `Here is the product dataset as a JSON array:\n${JSON.stringify(products)}`
+      content: `Available products dataset:\n${JSON.stringify(products, null, 2)}`
     }
   ];
 
   try {
-    // First call: let the model decide if it should call the function
+    // First call: force the model to call the function
     const response = await openai.chat.completions.create({
       model: 'gpt-4.1-mini',
       messages,
       tools,
-      tool_choice: 'auto'
+      tool_choice: { type: 'function', function: { name: 'filter_products' } }
     });
 
     const responseMessage = response.choices[0].message;
     if (responseMessage.tool_calls && responseMessage.tool_calls.length > 0) {
       for (const toolCall of responseMessage.tool_calls) {
         if (toolCall.function.name === 'filter_products') {
-          let filtered;
+          let filtered, reasoning;
           try {
             const args = JSON.parse(toolCall.function.arguments);
             filtered = args.filtered_products;
+            reasoning = args.reasoning;
           } catch (e) {
             console.error('Error parsing function arguments:', e.message);
             process.exit(1);
           }
+          
+
+          
           if (!filtered || filtered.length === 0) {
             console.log('\nNo products found matching your preferences.');
           } else {
