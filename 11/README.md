@@ -10,7 +10,7 @@ A console application that transcribes audio files using OpenAI's Whisper API, g
   - Total word count
   - Speaking speed (Words Per Minute)
   - Duration analysis
-  - Top frequently mentioned topics
+  - AI-powered topic extraction with meaningful topic names and mention counts
 - 💾 **Automatic File Management**: Creates separate timestamped files for each transcription
 - 🎯 **Multi-format Support**: Works with various audio formats (MP3, WAV, M4A, etc.)
 
@@ -100,13 +100,13 @@ The application creates timestamped files in the `outputs` directory:
 
 ```json
 {
-  "word_count": 1280,
-  "speaking_speed_wpm": 132,
-  "duration_seconds": 582,
+  "word_count": 938,
+  "speaking_speed_wpm": 126,
+  "duration_seconds": 448,
   "frequently_mentioned_topics": [
-    { "topic": "customer", "mentions": 6 },
-    { "topic": "roadmap", "mentions": 4 },
-    { "topic": "integration", "mentions": 3 }
+    { "topic": "Chest Pain Description and Characteristics", "mentions": 11 },
+    { "topic": "Associated Symptoms (e.g., shortness of breath, dizziness)", "mentions": 7 },
+    { "topic": "Concerns about Heart Attack", "mentions": 5 }
   ]
 }
 ```
@@ -135,9 +135,9 @@ The application provides real-time feedback and displays results directly in the
 ⏱️  Duration: 582 seconds
 
 🏷️  Top Mentioned Topics:
-   1. customer (6 mentions)
-   2. roadmap (4 mentions)
-   3. integration (3 mentions)
+   1. Chest Pain Description and Characteristics (11 mentions)
+   2. Associated Symptoms (e.g., shortness of breath, dizziness) (7 mentions)
+   3. Concerns about Heart Attack (5 mentions)
 ==================================================
 
 📁 Files saved:

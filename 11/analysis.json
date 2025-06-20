@@ -4,44 +4,40 @@
   "duration_seconds": 448,
   "frequently_mentioned_topics": [
     {
-      "topic": "okay",
-      "mentions": 26
+      "topic": "Chest Pain Description and Characteristics",
+      "mentions": 11
     },
     {
-      "topic": "pain",
-      "mentions": 14
-    },
-    {
-      "topic": "yeah",
-      "mentions": 12
-    },
-    {
-      "topic": "heart",
+      "topic": "Associated Symptoms (e.g., shortness of breath, dizziness)",
       "mentions": 7
     },
     {
-      "topic": "does",
-      "mentions": 7
-    },
-    {
-      "topic": "nope",
-      "mentions": 6
-    },
-    {
-      "topic": "having",
+      "topic": "Concerns about Heart Attack",
       "mentions": 5
     },
     {
-      "topic": "sharp",
+      "topic": "Past Medical History and Medications",
+      "mentions": 5
+    },
+    {
+      "topic": "Lifestyle Factors (e.g., smoking, alcohol, drug use)",
       "mentions": 4
     },
     {
-      "topic": "attack",
+      "topic": "Diagnostic Testing and Management Plan",
       "mentions": 4
     },
     {
-      "topic": "kind",
-      "mentions": 4
+      "topic": "Family History of Heart Conditions",
+      "mentions": 3
+    },
+    {
+      "topic": "Recent Illness and Viral Symptoms",
+      "mentions": 3
+    },
+    {
+      "topic": "Patient's Social and Occupational Background",
+      "mentions": 3
     }
   ]
 } 
