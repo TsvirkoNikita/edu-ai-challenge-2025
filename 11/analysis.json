@@ -1,17 +1,47 @@
 {
-  "word_count": 847,
-  "speaking_speed_wpm": 87,
-  "duration_seconds": 582,
+  "word_count": 938,
+  "speaking_speed_wpm": 126,
+  "duration_seconds": 448,
   "frequently_mentioned_topics": [
-    { "topic": "customer", "mentions": 12 },
-    { "topic": "onboarding", "mentions": 8 },
-    { "topic": "roadmap", "mentions": 6 },
-    { "topic": "integration", "mentions": 5 },
-    { "topic": "quarter", "mentions": 5 },
-    { "topic": "performance", "mentions": 4 },
-    { "topic": "features", "mentions": 4 },
-    { "topic": "business", "mentions": 4 },
-    { "topic": "system", "mentions": 3 },
-    { "topic": "growth", "mentions": 3 }
+    {
+      "topic": "okay",
+      "mentions": 26
+    },
+    {
+      "topic": "pain",
+      "mentions": 14
+    },
+    {
+      "topic": "yeah",
+      "mentions": 12
+    },
+    {
+      "topic": "heart",
+      "mentions": 7
+    },
+    {
+      "topic": "does",
+      "mentions": 7
+    },
+    {
+      "topic": "nope",
+      "mentions": 6
+    },
+    {
+      "topic": "having",
+      "mentions": 5
+    },
+    {
+      "topic": "sharp",
+      "mentions": 4
+    },
+    {
+      "topic": "attack",
+      "mentions": 4
+    },
+    {
+      "topic": "kind",
+      "mentions": 4
+    }
   ]
 } 
