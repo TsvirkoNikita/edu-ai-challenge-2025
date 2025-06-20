@@ -1,0 +1,17 @@
+{
+  "word_count": 847,
+  "speaking_speed_wpm": 87,
+  "duration_seconds": 582,
+  "frequently_mentioned_topics": [
+    { "topic": "customer", "mentions": 12 },
+    { "topic": "onboarding", "mentions": 8 },
+    { "topic": "roadmap", "mentions": 6 },
+    { "topic": "integration", "mentions": 5 },
+    { "topic": "quarter", "mentions": 5 },
+    { "topic": "performance", "mentions": 4 },
+    { "topic": "features", "mentions": 4 },
+    { "topic": "business", "mentions": 4 },
+    { "topic": "system", "mentions": 3 },
+    { "topic": "growth", "mentions": 3 }
+  ]
+} 
