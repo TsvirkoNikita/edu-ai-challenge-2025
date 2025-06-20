@@ -71,8 +71,60 @@ class AudioTranscriptionAnalyzer {
     }
   }
 
-  extractTopics(text) {
-    // Simple topic extraction based on frequent meaningful words
+  async extractTopics(text) {
+    try {
+      console.log('🔍 Extracting topics using AI...');
+      
+      const completion = await openai.chat.completions.create({
+        model: 'gpt-4.1-mini',
+        messages: [
+          {
+            role: 'system',
+            content: `You are an expert at analyzing transcribed conversations and extracting meaningful topics. 
+            
+            Your task is to:
+            1. Identify the main topics, themes, and subjects discussed in the conversation
+            2. Count how many times each topic is mentioned (directly or indirectly)
+            3. Focus on meaningful topics, not filler words or basic responses
+            4. Return ONLY a valid JSON array with topic names and mention counts
+            
+            Format your response as a JSON array like this:
+            [
+              { "topic": "Medical Symptoms", "mentions": 8 },
+              { "topic": "Family History", "mentions": 4 },
+              { "topic": "Lifestyle Questions", "mentions": 3 }
+            ]
+            
+            Include 5-10 most relevant topics. Topic names should be descriptive phrases, not single words.`
+          },
+          {
+            role: 'user',
+            content: `Please analyze this transcribed conversation and extract the main topics with their mention counts:\n\n${text}`
+          }
+        ],
+        max_tokens: 500,
+        temperature: 0.1
+      });
+
+      const response = completion.choices[0].message.content.trim();
+      
+      // Parse the JSON response
+      try {
+        const topics = JSON.parse(response);
+        console.log('✅ Topics extracted successfully!');
+        return Array.isArray(topics) ? topics : [];
+      } catch (parseError) {
+        console.warn('⚠️ Failed to parse AI topic response, falling back to basic extraction');
+        return this.extractTopicsBasic(text);
+      }
+    } catch (error) {
+      console.warn('⚠️ AI topic extraction failed, falling back to basic extraction:', error.message);
+      return this.extractTopicsBasic(text);
+    }
+  }
+
+  extractTopicsBasic(text) {
+    // Fallback: Simple topic extraction based on frequent meaningful words
     const words = text.toLowerCase()
       .replace(/[^\w\s]/g, ' ')
       .split(/\s+/)
@@ -109,7 +161,7 @@ class AudioTranscriptionAnalyzer {
     return stopWords.includes(word);
   }
 
-  calculateAnalytics(transcription) {
+  async calculateAnalytics(transcription) {
     const text = transcription.text;
     const duration = transcription.duration; // in seconds
     
@@ -119,8 +171,8 @@ class AudioTranscriptionAnalyzer {
     // Speaking speed (WPM)
     const speakingSpeedWpm = Math.round((wordCount / duration) * 60);
     
-    // Extract topics
-    const frequentlyMentionedTopics = this.extractTopics(text);
+    // Extract topics using AI
+    const frequentlyMentionedTopics = await this.extractTopics(text);
 
     return {
       word_count: wordCount,
@@ -193,7 +245,7 @@ class AudioTranscriptionAnalyzer {
       
       // Step 3: Calculate analytics
       console.log('📊 Calculating analytics...');
-      const analytics = this.calculateAnalytics(transcription);
+      const analytics = await this.calculateAnalytics(transcription);
       
       // Step 4: Save results
       console.log('💾 Saving results...');
